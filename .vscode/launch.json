@@ -8,7 +8,7 @@
             "type": "lldb-dap",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceRoot}/main",
+            "program": "${workspaceRoot}/build/SimplePlotter.out",
             "args": [
                 "-Wall",
                 "-pedantic",
@@ -16,7 +16,8 @@
                 "-O0"
             ],
             "env": [],
-            "cwd": "${workspaceRoot}"
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "build"
         }
     ]
 }

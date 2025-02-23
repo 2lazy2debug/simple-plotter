@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/Users/manuel/Developer/github_2lazy2debug/simple-plotter/build",
-  "command": "/usr/bin/clang++  -I/Users/manuel/Developer/github_2lazy2debug/simple-plotter/include -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/SimplePlotter.dir/main.cpp.o -c /Users/manuel/Developer/github_2lazy2debug/simple-plotter/main.cpp",
-  "file": "/Users/manuel/Developer/github_2lazy2debug/simple-plotter/main.cpp",
-  "output": "CMakeFiles/SimplePlotter.dir/main.cpp.o"
-}
-]
