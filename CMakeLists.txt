@@ -17,7 +17,7 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 # Add the executable
-add_executable(SimplePlotter.out src/main.cpp)
+add_executable(SimplePlotter.out src/main.cpp src/components/graph_components.hpp src/components/graph_components.cpp)
 
 # Include directories
 target_compile_features(SimplePlotter.out PRIVATE cxx_std_23)

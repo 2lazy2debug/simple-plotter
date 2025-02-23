@@ -1,38 +1,15 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
+#include "components/graph_components.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Angle.hpp>
+#include <SFML/Graphics/View.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
-#include <iostream>
 
-void draw_axes(sf::RenderWindow &window) {
-
-  auto w_coords = window.getSize();
-
-  // std::cout << "x coords : " << w_coords.x << " - y coords : " << w_coords.y
-  // << std::endl;
-
-  auto x_axis = sf::RectangleShape({static_cast<float>(w_coords.x), 1.f});
-  x_axis.setFillColor(sf::Color::White);
-  x_axis.setPosition({0.f, static_cast<float>(w_coords.y / 2)});
-  window.draw(x_axis);
-
-  auto y_axis = sf::RectangleShape({1.f, static_cast<float>(w_coords.y)});
-  y_axis.setFillColor(sf::Color::White);
-  y_axis.setPosition({static_cast<float>((w_coords.x / 2)), 0});
-  window.draw(y_axis);
-}
+const bool is_debug = false;
 
 int main() {
   auto window = sf::RenderWindow(sf::VideoMode({640u, 480u}), "SimplePlotter");
 
   window.setFramerateLimit(60);
-  auto view = window.getDefaultView();
-  // view.setCenter({0, 0});
-  // window.setView(view);
 
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
@@ -40,14 +17,20 @@ int main() {
         window.close();
       }
       if (event->is<sf::Event::Resized>()) {
-        view.setSize({0, 0}); // todo, get size from event
-        view.setCenter({0, 0});
-        window.setView(view);
+        sf::View cur_view = window.getView();
+        cur_view.setSize({static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)});
+        cur_view.setCenter(cur_view.getSize() / 2.f);
+        window.setView(cur_view);
       }
     }
     window.clear(sf::Color::Black);
 
-    draw_axes(window);
+    if (is_debug) {
+      window.setFramerateLimit(10);
+      sp::draw_debug(window);
+    }
+
+    sp::draw_axes(window, 10, 10 * window.getSize().y / window.getSize().x);
 
     window.display();
   }
