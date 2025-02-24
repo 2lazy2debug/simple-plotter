@@ -1,6 +1,8 @@
 #include "graph_components.hpp"
 #include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/PrimitiveType.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <iostream>
@@ -38,6 +40,12 @@ namespace sp {
       window.draw(step);
     }
   }
+
+  void draw_point(sf::Vector2f &point_v, sf::RenderWindow &window) {
+    sf::Vertex point(point_v, sf::Color::White);
+    window.draw(&point, 1, sf::PrimitiveType::Points);
+  }
+  void draw_points(sf::VertexArray &point_collection, sf::RenderWindow &window) { window.draw(point_collection); }
 
   void draw_function(sf::Vector2f &bounds, sf::RenderWindow &window, std::string function) {}
 

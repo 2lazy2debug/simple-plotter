@@ -9,6 +9,9 @@
 namespace sp {
 
   void draw_axes(sf::RenderWindow &window, short x_steps, short y_steps);
+  void draw_point(sf::Vector2f &point_v, sf::RenderWindow &window);
+  void draw_points(sf::VertexArray &point_collection, sf::RenderWindow &window);
+
   void draw_function(sf::Vector2f &bounds, sf::RenderWindow &window, std::string function);
   void draw_debug(sf::RenderWindow &window);
 

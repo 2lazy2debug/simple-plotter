@@ -1,6 +1,10 @@
 #include "components/graph_components.hpp"
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/PrimitiveType.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/View.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
 
@@ -31,6 +35,21 @@ int main() {
     }
 
     sp::draw_axes(window, 11, 11 * window.getSize().y / window.getSize().x);
+
+    auto pt1 = sf::Vector2f{30.f, 40.f};
+    sf::VertexArray va = sf::VertexArray(sf::PrimitiveType::LineStrip, 100);
+    sf::VertexArray va2 = sf::VertexArray(sf::PrimitiveType::Points, 100);
+    for (int i = 0; i < 20; ++i) {
+      // sp::draw_point(pt1, window);
+      pt1 *= 1.15f;
+      va[i].position = pt1;
+      va[i].color = sf::Color::Cyan;
+      va2[i].position = pt1;
+      va2[i].color = sf::Color::Red;
+    }
+
+    // sp::draw_points(va, window);
+    sp::draw_points(va2, window);
 
     window.display();
   }
