@@ -22,12 +22,20 @@ namespace sp {
     y_axis.setPosition({(w_coords.x / 2.f), 0});
     window.draw(y_axis);
 
-    sf::VertexArray x_axis_steps{};
     for (short i = 0; i < x_steps; ++i) {
       auto step = sf::RectangleShape({1, 20});
+      auto step_width = w_coords.x / x_steps;
       step.setFillColor(sf::Color::White);
-      step.setPosition({0, i * w_coords.x / 0});
-      // x_axis_steps.push_back(step) // i know push_back doesn't exist but i'm trying to understand what to use here
+      step.setPosition({(i * step_width) + (step_width / 2), w_coords.y / 2 - 10});
+      window.draw(step);
+    }
+
+    for (short i = 0; i < y_steps; ++i) {
+      auto step = sf::RectangleShape({20, 1});
+      auto step_width = w_coords.y / y_steps;
+      step.setFillColor(sf::Color::White);
+      step.setPosition({w_coords.x / 2 - 10, (i * step_width) + (step_width / 2)});
+      window.draw(step);
     }
   }
 

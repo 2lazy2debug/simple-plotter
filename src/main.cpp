@@ -30,7 +30,7 @@ int main() {
       sp::draw_debug(window);
     }
 
-    sp::draw_axes(window, 10, 10 * window.getSize().y / window.getSize().x);
+    sp::draw_axes(window, 11, 11 * window.getSize().y / window.getSize().x);
 
     window.display();
   }
