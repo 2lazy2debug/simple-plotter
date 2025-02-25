@@ -1,6 +1,7 @@
 #ifndef LEXER
 #define LEXER
 
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -18,6 +19,9 @@ namespace itp {
   struct Token {
     std::string value;
     TOKEN_TYPES t_type;
+    std::optional<FUNCTION_TOKEN> func_token;
+    std::optional<OPERATOR_TOKEN> oper_token;
+    std::optional<SYMBOL_TOKEN> sym_token;
   };
 
   std::vector<Token> tokenize(std::string &input);

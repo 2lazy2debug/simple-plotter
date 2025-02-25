@@ -19,6 +19,7 @@ namespace itp {
       case 's':
         if (std::string(ref, ref + 3) == "sin")
           ret.second = 3;
+
         if (std::string(ref, ref + 4) == "sqrt")
           ret.second = 4;
         break;
