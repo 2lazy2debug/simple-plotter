@@ -12,6 +12,9 @@ namespace itp {
   enum class OPERATOR_TOKEN { PLUS, MINUS, MULT, DIV, MODULO, EXP };
   enum class SYMBOL_TOKEN { LPAREN, RPAREN };
 
+  const std::string operators = "+-*/%^";
+  const std::string symbols = "()";
+
   struct Token {
     std::string value;
     TOKEN_TYPES t_type;

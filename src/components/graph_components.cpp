@@ -41,10 +41,6 @@ namespace sp {
     }
   }
 
-  void draw_point(sf::Vector2f &point_v, sf::RenderWindow &window) {
-    sf::Vertex point(point_v, sf::Color::White);
-    window.draw(&point, 1, sf::PrimitiveType::Points);
-  }
   void draw_points(sf::VertexArray &point_collection, sf::RenderWindow &window) { window.draw(point_collection); }
 
   void draw_function(sf::Vector2f &bounds, sf::RenderWindow &window, std::string function) {}

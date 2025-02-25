@@ -1,4 +1,5 @@
 #include "components/graph_components.hpp"
+#include "interpreter/lexer.hpp"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/PrimitiveType.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -7,10 +8,9 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
+#include <iostream>
 
-const bool is_debug = false;
-
-int main() {
+void start_gui(bool is_debug) {
   auto window = sf::RenderWindow(sf::VideoMode({640u, 480u}), "SimplePlotter");
 
   window.setFramerateLimit(60);
@@ -52,5 +52,21 @@ int main() {
     sp::draw_points(va2, window);
 
     window.display();
+  }
+}
+
+int main() {
+  bool is_debug = false;
+  // start_gui(false);
+
+  std::vector<std::string> formulaes{"sin(x) + 2x", "2x^2/(cos(x))", "log(n)*n/exp(12.32)+(x(x^2+9))"};
+
+  for (auto f : formulaes) {
+    auto tokens = itp::tokenize(f);
+    std::cout << "input : " << f << std::endl << "tokens : ";
+    for (auto t : tokens) {
+      std::cout << t.value << " | ";
+    }
+    std::cout << std::endl;
   }
 }
